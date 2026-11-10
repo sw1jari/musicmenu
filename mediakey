@@ -1,5 +1,5 @@
 #!/bin/sh
-# media key handler: controls the music-menu mpv if it is running, else playerctl
+# media key handler: controls the musicmenu mpv if it is running, else playerctl
 # usage: mediakey play-pause|next|previous
 
 SOCK="${XDG_RUNTIME_DIR:-/tmp}/music-mpv.sock"

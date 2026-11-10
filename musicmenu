@@ -9,7 +9,7 @@ PIDFILE="$RUN/music-mpv.pid"
 NOW="$RUN/music-now"
 # your own copy first, else the one a package installed
 LUA="$HOME/.config/mpv/scripts-music/now-playing.lua"
-[ -r "$LUA" ] || LUA=/usr/share/music-menu/now-playing.lua
+[ -r "$LUA" ] || LUA=/usr/share/musicmenu/now-playing.lua
 EXT='mp3|m4a|flac|ogg|opus|wav|aac|wma|mp4|mkv|webm'
 
 PLAY_ALL="▶ Play whole album"
@@ -51,8 +51,8 @@ browse() {
             if is_playing; then
                 entries+="⏯ Pause/resume"$'\n'"⏭ Next"$'\n'"⏮ Previous"$'\n'"⏹ Stop"$'\n'
             fi
-            # hand over to spotify-menu when it is installed
-            command -v spotify-menu >/dev/null && entries+="$SPOTIFY"$'\n'
+            # hand over to spotimenu when it is installed
+            command -v spotimenu >/dev/null && entries+="$SPOTIFY"$'\n'
         else
             entries+="$PLAY_ALL"$'\n'
         fi
@@ -69,7 +69,7 @@ browse() {
             "⏭ Next")         mpv_cmd '["playlist-next"]'; return 0 ;;
             "⏮ Previous")     mpv_cmd '["playlist-prev"]'; return 0 ;;
             "⏹ Stop")         stop_music; return 0 ;;
-            "$SPOTIFY")       exec spotify-menu ;;
+            "$SPOTIFY")       exec spotimenu ;;
             "$PLAY_ALL")
                 local files; collect "$dir" files
                 [ "${#files[@]}" -gt 0 ] && play "${files[@]}"
